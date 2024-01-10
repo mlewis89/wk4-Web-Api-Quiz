@@ -13,9 +13,9 @@
     <header>
 
         <nav>
-            <button class="button"  id="btn-view-scores">View High Scores</button>
+            <button class="button" id="btn-view-scores">View High Scores</button>
         </nav>
-        
+
         <div id=current-score>
             10pts
         </div>
@@ -24,7 +24,7 @@
         </div>
     </header>
     <div class="wrapper">
-        <div id="start-page" >
+        <div id="start-page">
             <h1>Mark's Coding Quiz</h1>
             <p>Try to answer the following code related questions before the timer runs out.
                 please note that wrong answers not only affect your score but also remove 15 seconds from your time.</p>
@@ -39,7 +39,7 @@
                 <li class="button" id="quiz-answer2"><button class="button">Option 2</button></li>
                 <li class="button" id="quiz-answer3"><button class="button">Option 3</button></li>
                 <li class="button" id="quiz-answer4"><button class="button">Option 4</button></li>
-            </ul>
+                </ul>
         </div>
 
         <div id="quiz-end-block" class="hidden">
@@ -47,11 +47,11 @@
             <p>Your final score is <span id="final-score">0</span></p>
 
             <p>Enter you name or initals to record your score</p>
-            <form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name">
+            <form id="game-score-submit">
+                
+                <input type="text" id="playername" name="playername">
                 <input class="button" type="submit" id="submit" value="Submit">
-                </form>
+            </form>
         </div>
     </div>
     <script src="./Assets/js/script.js"></script>

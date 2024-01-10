@@ -9,6 +9,8 @@ runningscoreEL = document.querySelector("#current-score")
 StartingblockEL = document.querySelector("#start-page");
 QuizBlockEL = document.querySelector("#quiz-block");
 endQuizBlockEL = document.querySelector("#quiz-end-block");
+recordScore = document.querySelector('#game-score-submit')
+playerNameEL = document.querySelector("#playername");
 
 //URLs
 var Page_scores = "./highscores.html"
@@ -51,6 +53,26 @@ QuizBlockEL.addEventListener('click', function () {
 
 });
 
+recordScore.addEventListener('submit', function(){
+    event.preventDefault();
+    //var temp = event;
+    var scores = JSON.parse(localStorage.getItem('quiz-score'));
+   /* if(scores === null)
+    {
+        var scores = [];
+    }
+    if(playername.value !== null)
+    {
+        var playerscore = {name: playername.value,
+                          score:score};
+        scores.push(playerscore);
+    }else
+    {
+        alert("please enter a name");
+    }*/
+    localStorage.setItem('quiz-score',JSON.stringify(scores));
+
+})
 
 
 function nextQuestion() {
