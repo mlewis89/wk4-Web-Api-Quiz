@@ -6,6 +6,7 @@ QuestionEL = document.querySelector("#question");
 OptionEL = document.querySelector("#quiz-options");
 timerEL = document.querySelector("#quiz-timer");
 runningscoreEL = document.querySelector("#current-score")
+finalScoreEL = document.querySelector("#final-score")
 StartingblockEL = document.querySelector("#start-page");
 QuizBlockEL = document.querySelector("#quiz-block");
 endQuizBlockEL = document.querySelector("#quiz-end-block");
@@ -56,21 +57,22 @@ QuizBlockEL.addEventListener('click', function () {
 recordScore.addEventListener('submit', function(){
     event.preventDefault();
     //var temp = event;
-    var scores = JSON.parse(localStorage.getItem('quiz-score'));
-   /* if(scores === null)
+    var storedScores = JSON.parse(localStorage.getItem('quiz-score'));
+    if(storedScores === null || storedScores === undefined)
     {
-        var scores = [];
+        var storedScores = [];
     }
     if(playername.value !== null)
     {
         var playerscore = {name: playername.value,
                           score:score};
-        scores.push(playerscore);
+        storedScores.push(playerscore);
     }else
     {
         alert("please enter a name");
-    }*/
-    localStorage.setItem('quiz-score',JSON.stringify(scores));
+    }
+    localStorage.setItem('quiz-score',JSON.stringify(storedScores));
+    document.location.href = Page_scores;
 
 })
 
@@ -100,6 +102,7 @@ function endGame() {
     //StartingblockEL.setAttribute('class','hidden');
     QuizBlockEL.setAttribute('class','hidden');
     endQuizBlockEL.setAttribute('class', 'visible');
+    finalScoreEL.textContent = score;
     clearInterval(timerID);
 }
 
