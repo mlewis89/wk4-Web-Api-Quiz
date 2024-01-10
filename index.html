@@ -16,22 +16,22 @@
             <button class="button"  id="btn-view-scores">View High Scores</button>
         </nav>
         
-        <div id=Current-score>
+        <div id=current-score>
             10pts
         </div>
         <div id=quiz-timer>
             1:00
         </div>
     </header>
-    <div class="wrapper"
-        <div id="start-page">
+    <div class="wrapper">
+        <div id="start-page" >
             <h1>Mark's Coding Quiz</h1>
             <p>Try to answer the following code related questions before the timer runs out.
                 please note that wrong answers not only affect your score but also remove 15 seconds from your time.</p>
             <button class="button" id="btn-start">Start Quiz</button>
         </div>
 
-        <div id="quiz-active">
+        <div id="quiz-block" class="hidden">
             <h2 id="question-title">Question 1 of 10</h2>
             <h3 id="question">Question</h3>
             <ol id="quiz-options">
@@ -39,10 +39,10 @@
                 <li class="button" id="quiz-answer2"><button class="button">Option 2</button></li>
                 <li class="button" id="quiz-answer3"><button class="button">Option 3</button></li>
                 <li class="button" id="quiz-answer4"><button class="button">Option 4</button></li>
-            </ol>
+            </ul>
         </div>
 
-        <div id="end-of-game">
+        <div id="quiz-end-block" class="hidden">
             <h2 id="quiz-complete">Quiz Complete!</h2>
             <p>Your final score is <span id="final-score">0</span></p>
 

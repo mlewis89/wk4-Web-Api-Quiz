@@ -16,3 +16,12 @@ header{
     justify-content: space-between;
 }
 
+.visible
+{
+    display: inline;
+}
+
+.hidden
+{
+    display: none;
+}
