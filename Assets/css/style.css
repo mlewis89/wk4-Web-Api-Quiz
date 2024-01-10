@@ -25,3 +25,14 @@ header{
 {
     display: none;
 }
+
+.quizbutton{
+    color:white;
+    background-color: blue;
+    padding: 5px;
+}
+
+.quizbutton:hover{
+    color:white;
+    background-color: rgb(106, 106, 255);
+}

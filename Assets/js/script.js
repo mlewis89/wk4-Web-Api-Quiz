@@ -1,7 +1,6 @@
 //html elements
 StartGameEL = document.querySelector("#btn-start");
 ViewScoresEL = document.querySelector("#btn-view-scores");
-QuestionBlockEL = document.querySelector("#quiz-active");
 QuestionTiltleEL = document.querySelector("#question-title");
 QuestionEL = document.querySelector("#question");
 OptionEL = document.querySelector("#quiz-options");
@@ -17,6 +16,7 @@ var Page_scores = "./highscores.html"
 var timerCount;
 var timerID;
 var currentQuestion = 0;
+var score = 0;
 
 
 //event handler to redirect to highscores.html
@@ -28,47 +28,59 @@ ViewScoresEL.addEventListener('click', function () {
 StartGameEL.addEventListener('click', function () {
     timerCount = 60;
     //start timer
-    //loadFirstQuestion();
-    StartingblockEL.setAttribute(class='hidden');
-    QuizBlockEL.setAttribute(class='visible');
-    endQuizBlockEL.setAttribute(class='hidden');
+    StartingblockEL.setAttribute('class','hidden');
+    QuizBlockEL.setAttribute('class', 'visible');
+    //endQuizBlockEL.setAttribute('class','hidden');
     StartTimer();
     nextQuestion();
-    //for items in questiosn array
-    //render question[i]
+});
+
+QuizBlockEL.addEventListener('click', function () {
+    var buttonID = parseInt(event.target.id.slice(-1));
+    if (questionArr[parseInt(currentQuestion - 1)].answer == buttonID) {
+        //alert("Corect");
+        score++;
+        runningscoreEL.textContent = score
+    }
+    else {
+        //alert("Wrong!");
+        timerCount = timerCount - 15;
+    }
+
+    nextQuestion();
 
 });
 
 
-function nextQuestion()
-{
-    if(currentQuestion == 0) //xif first question handle init items
-    {
 
+function nextQuestion() {
+    if (currentQuestion >= questionArr.length) //endgame if there are no more questions
+    {
+        endGame();
+        return;
     }
-   
+
     var questionObj = questionArr[currentQuestion];
-    QuestionTiltleEL.textContent = "Question " + parseInt(currentQuestion + 1) + " of "+ questionArr.length ;
+    QuestionTiltleEL.textContent = "Question " + parseInt(currentQuestion + 1) + " of " + questionArr.length;
     QuestionEL.textContent = questionObj.question;
     OptionEL.innerHTML = "";
-    for(var i=0; i<=questionObj.options; i++)
-    {
+    for (var i = 0; i < questionObj.options.length; i++) {
         var li = document.createElement("li");
         li.textContent = questionObj.options[i];
-        li.setAttribute("id", "quiz-option"+i); 
-        li.setAttribute("class", "button"); 
-        OptionEL.appendChild(li);   
+        li.setAttribute("id", "quiz-option_" + i);
+        li.setAttribute("class", "quizbutton");
+        OptionEL.appendChild(li);
     }
     currentQuestion++;
 }
 
-function endGame ()
-{
-    StartingblockEL.setAttribute(class='hidden');
-    QuizBlockEL.setAttribute(class='hidden');
-    endQuizBlockEL.setAttribute(class='visible');
+function endGame() {
+    //StartingblockEL.setAttribute('class','hidden');
+    QuizBlockEL.setAttribute('class','hidden');
+    endQuizBlockEL.setAttribute('class', 'visible');
+    clearInterval(timerID);
 }
-   
+
 
 //eventhandler to record quiz selection
 
@@ -78,30 +90,31 @@ function endGame ()
 //start timer
 function StartTimer(sec) {
     //
-    timerID = setInterval(function () 
-    {
+    timerID = setInterval(function () {
         timerCount--;
         timerEL.textContent = timerCount;
-        if (timerCount <= 0) 
-        {
+        if (timerCount <= 0) {
             clearInterval(timerID);
             endGame();
         }
-     } ,1000);
+    }, 1000);
 }
 
 //list of questions
 questionArr = [
-    {   question: "what is the average airspeed of an unlaiden swallow?", //question
-        options: ["1mph","10kmh","African or europeaN?", "100 kmh"], //list of possible answers
+    {
+        question: "what is the average airspeed of an unlaiden swallow?", //question
+        options: ["1mph", "10kmh", "African or europeaN?", "100 kmh"], //list of possible answers
         answer: 2 //index of the correct answer in the option arr
     },
-    {   question: "which of the following is primarily responsible for the formatting of a webpage?", //question
-        options: ["css","html","javascript", "gitHub"], //list of possible answers
+    {
+        question: "which of the following is primarily responsible for the formatting of a webpage?", //question
+        options: ["css", "html", "javascript", "gitHub"], //list of possible answers
         answer: 0 //index of the correct answer in the option arr
     },
-    {   question: "what does DOM stand for", //question
-        options: ["Document Over Music","Document Object Model","Data Object Mode ", "Display On Mouse"], //list of possible answers
+    {
+        question: "what does DOM stand for", //question
+        options: ["Document Over Music", "Document Object Model", "Data Object Mode ", "Display On Mouse"], //list of possible answers
         answer: 1 //index of the correct answer in the option arr
     }
 ];
