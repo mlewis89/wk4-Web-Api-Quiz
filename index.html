@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Marks Coding Quiz</title>
+    <link rel="stylesheet" href="./Assets/css/style.css" />
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <nav>
+            <a href="./highscores.html">View High Scores</a>
+        </nav>
+        <div class=quiz-timer>
+            1:00
+        </div>
+
+        <div id="start-page">
+            <h1>Mark's Coding Quiz</h1>
+            <p>Try to answer the following code related questions before the timer runs out.
+                please note that wrong answers not only affect your score but also remove 15 seconds from your time.</p>
+            <button id="start">Start Quiz</button>
+        </div>
+
+        <div id="quiz-active">
+            <h2 id="quiz-question">Questions</h2>
+            <ol>
+                <li id="quiz-answers">Options</li>
+            </ol>
+        </div>
+
+        <div id="end-of-game">
+            <h2 id="quiz-complete">Quiz Complete!</h2>
+            <p>your final score is <span id="final-score">0</span></p>
+
+            <p>Enter you name or initals to record your score</p>
+            <form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <input type="submit" id="submit" value="Submit">
+                </form>
+        </div>
+    </div>
+    <script src="./Assets/js/script.js"></script>
+</body>
+
+</html>
