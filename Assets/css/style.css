@@ -1,0 +1,18 @@
+
+
+button{
+    color:white;
+    background-color: blue;
+    padding: 5px;
+}
+
+button:hover{
+    color:white;
+    background-color: rgb(106, 106, 255);
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+}
+
