@@ -42,7 +42,32 @@ StartGameEL.addEventListener('click', function () {
 
 function nextQuestion()
 {
+    if(currentQuestion == 0) //xif first question handle init items
+    {
 
+    }
+   
+    var questionObj = questionArr[currentQuestion];
+    QuestionTiltleEL.textContent = "Question " + parseInt(currentQuestion + 1) + " of "+ questionArr.length ;
+    QuestionEL.textContent = questionObj.question;
+    OptionEL.innerHTML = "";
+    for(var i=0; i<=questionObj.options; i++)
+    {
+        var li = document.createElement("li");
+        li.textContent = questionObj.options[i];
+        li.setAttribute("id", "quiz-option"+i); 
+        li.setAttribute("class", "button"); 
+        OptionEL.appendChild(li);   
+    }
+    currentQuestion++;
+}
+
+function endGame ()
+{
+    StartingblockEL.setAttribute(class='hidden');
+    QuizBlockEL.setAttribute(class='hidden');
+    endQuizBlockEL.setAttribute(class='visible');
+}
    
 
 //eventhandler to record quiz selection
