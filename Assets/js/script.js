@@ -37,32 +37,28 @@ StartGameEL.addEventListener('click', function () {
     //start timer
     StartingblockEL.setAttribute('class', 'hidden');
     QuizBlockEL.setAttribute('class', 'visible');
-    //endQuizBlockEL.setAttribute('class','hidden');
     StartTimer();
     nextQuestion();
 });
 
+//eventhandler to record quiz selection
 QuizBlockEL.addEventListener('click', function () {
     var buttonID = parseInt(event.target.id.slice(-1));
     if (questionArr[parseInt(currentQuestion - 1)].answer == buttonID) {
-        //alert("Corect");
         score++;
         runningscoreEL.textContent = score
         AudioSuccessEL.play();
     }
     else {
-        //alert("Wrong!");
         timerCount = timerCount - 15;
         AudioFailEL.play();
     }
-
     nextQuestion();
-
 });
 
+//save score to local storage
 recordScore.addEventListener('submit', function () {
     event.preventDefault();
-    //var temp = event;
     var storedScores = JSON.parse(localStorage.getItem(storagekey));
     if (storedScores === null || storedScores === undefined) {
         var storedScores = [];
@@ -105,18 +101,11 @@ function nextQuestion() {
 }
 
 function endGame() {
-    //StartingblockEL.setAttribute('class','hidden');
     QuizBlockEL.setAttribute('class', 'hidden');
     endQuizBlockEL.setAttribute('class', 'visible');
     finalScoreEL.textContent = score;
     clearInterval(timerID);
 }
-
-
-//eventhandler to record quiz selection
-
-
-//save score to local storage
 
 //start timer
 function StartTimer(sec) {
