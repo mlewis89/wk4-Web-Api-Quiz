@@ -16,11 +16,11 @@
             <button class="button" id="btn-view-scores">View High Scores</button>
         </nav>
 
-        <div id=current-score>
-            10pts
+        <div id=score>
+            <span id="current-score">0</span> pts
         </div>
         <div id=quiz-timer>
-            1:00
+            timer
         </div>
     </header>
     <div class="wrapper">
@@ -42,7 +42,7 @@
                 </ul>
         </div>
 
-        <div id="quiz-end-block" class="visble">
+        <div id="quiz-end-block" class="hidden">
             <h2 id="quiz-complete">Quiz Complete!</h2>
             <p>Your final score is <span id="final-score">0</span></p>
 
@@ -54,6 +54,13 @@
             </form>
         </div>
     </div>
+    <audio id="audio-success">
+        <source src="./assets/Soundeffects/success-1-6297.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audio-fail">
+        <source src="./assets/Soundeffects/negative_beeps-6008.mp3" type="audio/mpeg">
+    </audio>
+    
     <script src="./Assets/js/script.js"></script>
 </body>
 

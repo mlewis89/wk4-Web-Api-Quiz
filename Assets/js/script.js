@@ -12,6 +12,8 @@ QuizBlockEL = document.querySelector("#quiz-block");
 endQuizBlockEL = document.querySelector("#quiz-end-block");
 recordScore = document.querySelector('#game-score-submit')
 playerNameEL = document.querySelector("#playername");
+AudioSuccessEL = document.querySelector("#audio-success");
+AudioFailEL = document.querySelector("#audio-fail");
 
 //URLs
 var Page_scores = "./highscores.html"
@@ -19,6 +21,7 @@ var storagekey = "quiz-scores";
 
 var timerCount;
 var timerID;
+var timerDefault = 60; //time in seconds of timer
 var currentQuestion = 0;
 var score = 0;
 
@@ -30,9 +33,9 @@ ViewScoresEL.addEventListener('click', function () {
 });
 //event handler to start game on button press
 StartGameEL.addEventListener('click', function () {
-    timerCount = 60;
+    timerCount = timerDefault;
     //start timer
-    StartingblockEL.setAttribute('class','hidden');
+    StartingblockEL.setAttribute('class', 'hidden');
     QuizBlockEL.setAttribute('class', 'visible');
     //endQuizBlockEL.setAttribute('class','hidden');
     StartTimer();
@@ -45,35 +48,37 @@ QuizBlockEL.addEventListener('click', function () {
         //alert("Corect");
         score++;
         runningscoreEL.textContent = score
+        AudioSuccessEL.play();
     }
     else {
         //alert("Wrong!");
         timerCount = timerCount - 15;
+        AudioFailEL.play();
     }
 
     nextQuestion();
 
 });
 
-recordScore.addEventListener('submit', function(){
+recordScore.addEventListener('submit', function () {
     event.preventDefault();
     //var temp = event;
     var storedScores = JSON.parse(localStorage.getItem(storagekey));
-    if(storedScores === null || storedScores === undefined)
-    {
+    if (storedScores === null || storedScores === undefined) {
         var storedScores = [];
     }
-    if(playername.value !== null)
-    {
-        var playerscore = {name: playername.value,
-                          score:score};
+    if (playername.value !== null) {
+        var playerscore = {
+            name: playername.value,
+            score: score,
+            time: timerDefault - timerCount
+        };
         storedScores.push(playerscore);
-    }else
-    {
+    } else {
         alert("please enter a name");
     }
-    storedScores.sort((a,b) => { return b.score - a.score;}); //sort Scoreboard by scores in decending order
-    localStorage.setItem(storagekey,JSON.stringify(storedScores));
+    storedScores.sort((a, b) => { return b.score - a.score; }); //sort Scoreboard by scores in decending order
+    localStorage.setItem(storagekey, JSON.stringify(storedScores));
     document.location.href = Page_scores;
 
 })
@@ -101,7 +106,7 @@ function nextQuestion() {
 
 function endGame() {
     //StartingblockEL.setAttribute('class','hidden');
-    QuizBlockEL.setAttribute('class','hidden');
+    QuizBlockEL.setAttribute('class', 'hidden');
     endQuizBlockEL.setAttribute('class', 'visible');
     finalScoreEL.textContent = score;
     clearInterval(timerID);
