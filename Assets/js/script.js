@@ -1,6 +1,7 @@
 //html elements
 StartGameEL = document.querySelector("#btn-start");
 ViewScoresEL = document.querySelector("#btn-view-scores");
+tryAgainEL = document.querySelector("#btn-tryAgain");
 QuestionTiltleEL = document.querySelector("#question-title");
 QuestionEL = document.querySelector("#question");
 OptionEL = document.querySelector("#quiz-options");
@@ -53,6 +54,7 @@ QuizBlockEL.addEventListener('click', function () {
         timerCount = timerCount - 15;
         AudioFailEL.play();
     }
+    UpdateScore(score);
     nextQuestion();
 });
 
@@ -76,6 +78,23 @@ recordScore.addEventListener('submit', function () {
     } else {
         alert("please enter a name");
     }
+})
+
+function UpdateScore(x)
+{
+    score = x;
+    runningscoreEL.textContent = x;
+    finalScoreEL.textContent = x;
+
+}
+
+tryAgainEL.addEventListener('click',function(){
+    StartingblockEL.setAttribute('class', 'visible');
+    QuizBlockEL.setAttribute('class', 'hidden');
+    endQuizBlockEL.setAttribute('class', 'hidden');
+    UpdateScore(0);
+    currentQuestion = 0;
+
 })
 
 function nextQuestion() {
@@ -102,7 +121,7 @@ function nextQuestion() {
 function endGame() {
     QuizBlockEL.setAttribute('class', 'hidden');
     endQuizBlockEL.setAttribute('class', 'visible');
-    finalScoreEL.textContent = score;
+    UpdateScore(score);
     clearInterval(timerID);
 }
 

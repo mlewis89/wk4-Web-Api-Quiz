@@ -13,14 +13,14 @@
     <header>
 
         <nav>
-            <button class="button" id="btn-view-scores">View High Scores</button>
+            <button id="btn-view-scores" class="visible">View High Scores</button>
         </nav>
 
         <div id=score>
             <span id="current-score">0</span> pts
         </div>
-        <div id=quiz-timer>
-            timer
+        <div >
+            Time: <span id=quiz-timer>-</span> sec
         </div>
     </header>
     <div class="wrapper">
@@ -52,6 +52,7 @@
                 <input type="text" id="playername" name="playername">
                 <button type="submit" id="submit" value="Submit">Submit</button>
             </form>
+            <button id="btn-tryAgain">Try Again</button>
         </div>
     </div>
     <audio id="audio-success">
