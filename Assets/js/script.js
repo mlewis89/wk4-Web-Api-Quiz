@@ -146,27 +146,27 @@ questionArr = [
     },
     {
         question: "Which of the below denotes an array in javascript?", //question
-        options: ["''", "[]", "{}", "Array"], //list of possible answers
+        options: ["''", "[]", "{}", "Arr"], //list of possible answers
         answer:  1//index of the correct answer in the option arr
     },
     {
-        question: "which of the following is a Method of a javascript string?", //question
+        question: "Which of the following is a Method of a javascript string?", //question
         options: [".skin()", ".peel()", ".slice()", ".tape()"], //list of possible answers
         answer:  2//index of the correct answer in the option arr
     },
     {
-        question: "what method would you use to listen for an event?", //question
+        question: "What method would you use to listen for an event?", //question
         options: ["addEventListener","listen",  "string", "array"], //list of possible answers
         answer:  0//index of the correct answer in the option arr
     },
     {
-        question: "which is correct to read an object called 'name' from local storage?", //question
+        question: "Which is correct way to read an object called 'name' from local storage?", //question
         options: ["name", "JSON.parse(localStorage.getItem('name'))", "localStorage.value", "localStorage.getitem('name')"], //list of possible answers
         answer:  1//index of the correct answer in the option arr
     },
     {
         question: "Bonus: What is the average airspeed of an unlaiden swallow?", //question
-        options: ["1mph", "10kmh", "African or european?", "100 kmh"], //list of possible answers
+        options: ["1mph", "10kmh", "African or European?", "100 kmh"], //list of possible answers
         answer: 2 //index of the correct answer in the option arr
     }
 ];
