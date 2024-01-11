@@ -72,7 +72,7 @@ recordScore.addEventListener('submit', function () {
             time: timerDefault - timerCount
         };
         storedScores.push(playerscore);
-        storedScores.sort((a, b) => { return b.score - a.score; }); //sort Scoreboard by scores in decending order
+        storedScores.sort((a, b) => { if(b.score == a.score){return a.time - b.time}return b.score - a.score; }); //sort Scoreboard by scores in decending order
         localStorage.setItem(storagekey, JSON.stringify(storedScores));
         document.location.href = Page_scores;
     } else {

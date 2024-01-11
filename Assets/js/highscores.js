@@ -27,7 +27,7 @@ function renderScoreboard() {
     if (storedScores.length > 0) {
         for (var i = 0; i < storedScores.length; i++) {
             var li = document.createElement("li");
-            li.textContent = storedScores[i].name + " - " + storedScores[i].score + " points";
+            li.textContent = storedScores[i].name + " - " + storedScores[i].score + " points, in " + storedScores[i].time + " seconds" ;
             ScoreboardListEL.appendChild(li);
         }
     }
