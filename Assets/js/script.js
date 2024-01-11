@@ -140,19 +140,34 @@ function StartTimer(sec) {
 //list of questions
 questionArr = [
     {
-        question: "what is the average airspeed of an unlaiden swallow?", //question
-        options: ["1mph", "10kmh", "African or europeaN?", "100 kmh"], //list of possible answers
+        question: "Which of these is Not a javascrit datatype?", //question
+        options: ["Integer", "Boolean", "Css", "String"], //list of possible answers
+        answer:  2//index of the correct answer in the option arr
+    },
+    {
+        question: "Which of the below denotes an array in javascript?", //question
+        options: ["''", "[]", "{}", "Array"], //list of possible answers
+        answer:  1//index of the correct answer in the option arr
+    },
+    {
+        question: "which of the following is a Method of a javascript string?", //question
+        options: [".skin()", ".peel()", ".slice()", ".tape()"], //list of possible answers
+        answer:  2//index of the correct answer in the option arr
+    },
+    {
+        question: "what method would you use to listen for an event?", //question
+        options: ["addEventListener","listen",  "string", "array"], //list of possible answers
+        answer:  0//index of the correct answer in the option arr
+    },
+    {
+        question: "which is correct to read an object called 'name' from local storage?", //question
+        options: ["name", "JSON.parse(localStorage.getItem('name'))", "localStorage.value", "localStorage.getitem('name')"], //list of possible answers
+        answer:  1//index of the correct answer in the option arr
+    },
+    {
+        question: "Bonus: What is the average airspeed of an unlaiden swallow?", //question
+        options: ["1mph", "10kmh", "African or european?", "100 kmh"], //list of possible answers
         answer: 2 //index of the correct answer in the option arr
-    },
-    {
-        question: "which of the following is primarily responsible for the formatting of a webpage?", //question
-        options: ["css", "html", "javascript", "gitHub"], //list of possible answers
-        answer: 0 //index of the correct answer in the option arr
-    },
-    {
-        question: "what does DOM stand for", //question
-        options: ["Document Over Music", "Document Object Model", "Data Object Mode ", "Display On Mouse"], //list of possible answers
-        answer: 1 //index of the correct answer in the option arr
     }
 ];
 
