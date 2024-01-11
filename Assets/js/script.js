@@ -15,6 +15,7 @@ playerNameEL = document.querySelector("#playername");
 
 //URLs
 var Page_scores = "./highscores.html"
+var storagekey = "quiz-scores";
 
 var timerCount;
 var timerID;
@@ -57,7 +58,7 @@ QuizBlockEL.addEventListener('click', function () {
 recordScore.addEventListener('submit', function(){
     event.preventDefault();
     //var temp = event;
-    var storedScores = JSON.parse(localStorage.getItem('quiz-score'));
+    var storedScores = JSON.parse(localStorage.getItem(storagekey));
     if(storedScores === null || storedScores === undefined)
     {
         var storedScores = [];
@@ -71,7 +72,7 @@ recordScore.addEventListener('submit', function(){
     {
         alert("please enter a name");
     }
-    localStorage.setItem('quiz-score',JSON.stringify(storedScores));
+    localStorage.setItem(storagekey,JSON.stringify(storedScores));
     document.location.href = Page_scores;
 
 })
