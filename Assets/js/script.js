@@ -72,11 +72,11 @@ recordScore.addEventListener('submit', function(){
     {
         alert("please enter a name");
     }
+    storedScores.sort((a,b) => { return b.score - a.score;}); //sort Scoreboard by scores in decending order
     localStorage.setItem(storagekey,JSON.stringify(storedScores));
     document.location.href = Page_scores;
 
 })
-
 
 function nextQuestion() {
     if (currentQuestion >= questionArr.length) //endgame if there are no more questions
