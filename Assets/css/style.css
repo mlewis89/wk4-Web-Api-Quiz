@@ -36,3 +36,7 @@ header{
     color:white;
     background-color: rgb(106, 106, 255);
 }
+
+.lastAttempt{
+    background-color: bisque;
+}

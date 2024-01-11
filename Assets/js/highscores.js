@@ -25,9 +25,15 @@ function renderScoreboard() {
     var storedScores = JSON.parse(localStorage.getItem(storagekey));
     ScoreboardListEL.innerHTML = "";
     if (storedScores.length > 0) {
-        for (var i = 0; i < storedScores.length; i++) {
+        storedScores[storedScores.length - 1].last = true;
+        var sortedScores = storedScores.sort((a, b) => { if(b.score == a.score){return a.time - b.time}else{return b.score - a.score;} }); //sort Scoreboard by scores in decending order
+        for (var i = 0; i < sortedScores.length; i++) {
             var li = document.createElement("li");
-            li.textContent = storedScores[i].name + " - " + storedScores[i].score + " points, in " + storedScores[i].time + " seconds" ;
+            li.textContent = sortedScores[i].name + " - " + sortedScores[i].score + " points, in " + sortedScores[i].time + " seconds" ;
+            if(sortedScores[i].last)
+            {
+                li.setAttribute('class','lastAttempt');
+            }
             ScoreboardListEL.appendChild(li);
         }
     }
