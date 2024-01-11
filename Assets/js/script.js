@@ -63,20 +63,19 @@ recordScore.addEventListener('submit', function () {
     if (storedScores === null || storedScores === undefined) {
         var storedScores = [];
     }
-    if (playername.value !== null) {
+    if (playername.value !== "") {
         var playerscore = {
             name: playername.value,
             score: score,
             time: timerDefault - timerCount
         };
         storedScores.push(playerscore);
+        storedScores.sort((a, b) => { return b.score - a.score; }); //sort Scoreboard by scores in decending order
+        localStorage.setItem(storagekey, JSON.stringify(storedScores));
+        document.location.href = Page_scores;
     } else {
         alert("please enter a name");
     }
-    storedScores.sort((a, b) => { return b.score - a.score; }); //sort Scoreboard by scores in decending order
-    localStorage.setItem(storagekey, JSON.stringify(storedScores));
-    document.location.href = Page_scores;
-
 })
 
 function nextQuestion() {

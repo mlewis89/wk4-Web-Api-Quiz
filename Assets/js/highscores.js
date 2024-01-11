@@ -5,7 +5,6 @@ ScoreboardListEL = document.querySelector("#scoreboard");
 //URLs
 var Page_index = "./index.html";
 var storagekey = "quiz-scores";
-var storedScores;
 
 //event handler to return to game
 returnEL.addEventListener('click', function () {
